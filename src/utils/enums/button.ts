@@ -1,0 +1,7 @@
+export enum ButtonVariants {
+  PRIMARY = 'PRIMARY',
+  SECONDARY = 'SECONDARY',
+  BORDERLESS = 'BORDERLESS',
+  NONE = 'NONE',
+  OUTLINE_PRIMARY = 'OUTLINE_PRIMARY'
+}
