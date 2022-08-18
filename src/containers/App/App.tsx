@@ -12,44 +12,17 @@ import './App.css';
 
 function App() {
 
-  const handleUploadFile = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.files && event.target.files[0]) {
-          const params = {
-              Bucket: 'bucket-evangelism-rdr-mobile',
-              Key: event.target.files[0].name || '',
-              Body: event.target.files[0] || '',
-          }
-          try {
-              const parallelUploads3 = new Upload({
-                  client: new S3Client({region: 'us-east-1', credentials: {accessKeyId: 'AKIAYI6VQGA4BASGLTW4', secretAccessKey: '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'}}),
-                  params,
-                  leavePartsOnError: false,
-              });
-                console.log('pasa');
-              parallelUploads3.on("httpUploadProgress", (progress) => {
-                  console.log(progress);
-              });
-
-              parallelUploads3.done();
-          } catch (e) {
-              console.log(e);
-          }
-      }
-  }, []);
-
-  return (
-    <StyledMainApp className="App">
-        <ScreenClassProvider>
-            <ThemeProvider theme={{}}>
-                {/* Input file */}
-                {/*<input type='file' onChange={handleUploadFile} />*/}
-                {/* SideBar */}
-                <SideMenu />
-                <GlobalStyle />
-            </ThemeProvider>
-        </ScreenClassProvider>
-    </StyledMainApp>
-  );
+    return (
+        <StyledMainApp className="App">
+            <ScreenClassProvider>
+                <ThemeProvider theme={{}}>
+                    {/* SideBar */}
+                    <SideMenu />
+                    <GlobalStyle />
+                </ThemeProvider>
+            </ScreenClassProvider>
+        </StyledMainApp>
+    );
 }
 
 export default App;
