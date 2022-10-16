@@ -10,6 +10,7 @@ import {GlobalStyle} from 'theme/globalStyle';
 import {StyledMainApp, AppMainContainer, StyledRoutesContainer} from './style';
 import './App.css';
 import {routes} from "../../utils/routesHelper";
+import {AuthContext} from "../../context/auth";
 
 const routing = Object.values(routes).reduce
     <{ publicRoutes: IRoute[] }>((pV, cV) => {
@@ -36,10 +37,10 @@ const InnerApp: React.FC = React.memo(() => {
     )
 
     return (
-        <AppMainContainer
-          className="App"
-        >
-
+        <AuthContext.Provider value={{token: 'Josue'}}>
+            <AppMainContainer
+                className="App"
+            >
               {/* SideBar */}
               {
                 <SideMenu />
@@ -49,8 +50,9 @@ const InnerApp: React.FC = React.memo(() => {
                 {/* SideBar */}
                 {renderRoutes}
               </StyledRoutesContainer>
+            </AppMainContainer>
+        </AuthContext.Provider>
 
-        </AppMainContainer>
     )
 });
 

@@ -4,7 +4,8 @@ import React from 'react';
 import {
   sideBarRoutes,
 } from 'utils/routesHelper';
-
+//context
+import {AuthContext} from "context/auth";
 // Styles
 import {
   StyledSideMenuContainer,
@@ -37,6 +38,7 @@ const SideMenu = ({
   className,
 }: SideMenuProps) => {
   // Hooks
+  const authContext = React.useContext(AuthContext);
 
   // Renders
   const renderSideBarRoute = React.useCallback((sideBarRoute: ISideBarRoute) => (
