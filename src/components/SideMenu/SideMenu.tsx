@@ -21,7 +21,6 @@ import {
   bottomRoutes: ISideBarRoute[],
 }>((pV, cV) => {
   const { isBottom } = cV;
-  console.log('pV, cV xd', pV);
   if (isBottom) {
     pV.bottomRoutes.push(cV);
   } else {
@@ -43,6 +42,9 @@ const SideMenu = ({
   const renderSideBarRoute = React.useCallback((sideBarRoute: ISideBarRoute) => (
     <StyledNavItem
       key={sideBarRoute.id}
+      to={sideBarRoute.to}
+      exact
+      activeClassName="active-nav-item"
     >
       <StyledNavItemIconContainer
         className="nav-item-icon-container"

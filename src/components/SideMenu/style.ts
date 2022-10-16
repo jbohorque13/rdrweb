@@ -34,7 +34,7 @@ export const StyledPagesContainer = styled.div`
 
 export const StyledBottomOptionsContainer = styled.div``;
 
-export const StyledNavItem = styled.div`
+export const StyledNavItem = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: flex-start;

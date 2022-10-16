@@ -2,7 +2,8 @@ import React from 'react';
 import {IconDashboardActiveSVG, IconDashboardNotActiveSVG, IconManagerActiveSVG, IconManagerNotActiveSVG} from "components/UI/Icon";
 
 //components
-const DashboarPage = React.lazy(() => import('pages/DashboardPage'))
+const DashboardPage = React.lazy(() => import('pages/DashboardPage'))
+const PersonToGroup = React.lazy(() => import('pages/PersonToGroup'))
 // Roles
 
 export enum Roles {
@@ -15,13 +16,11 @@ export const routes: CommonJSON<IRoute> = {
     //Private Routes
     DASHBOARD: {
         path: '/dashboard',
-        component: DashboarPage,
-        roleGuards: [Roles.ADMIN]
+        component: DashboardPage,
     },
     PERSONSTOGROUP: {
         path: '/personas/consolidar',
-        component: DashboarPage,
-        roleGuards: [Roles.ADMIN]
+        component: PersonToGroup,
     }
 }
 
@@ -31,7 +30,7 @@ export const sideBarRoutes: CommonJSON<ISideBarRoute> = {
         label: 'Dashboard',
         labelFallback: 'Dashboard labelFallback',
         to: routes.DASHBOARD.path,
-        isBottom: false,
+        isBottom: true,
         icons: {
             active: IconDashboardActiveSVG,
             notActive: IconDashboardNotActiveSVG
@@ -41,8 +40,8 @@ export const sideBarRoutes: CommonJSON<ISideBarRoute> = {
         id: 'personToGroup',
         label: 'Personas a Consolidar',
         labelFallback: 'Personas a Consolidar labelFallback',
-        to: routes.DASHBOARD.path,
-        isBottom: false,
+        to: routes.PERSONSTOGROUP.path,
+        isBottom: true,
         icons: {
             active: IconManagerActiveSVG,
             notActive: IconManagerNotActiveSVG

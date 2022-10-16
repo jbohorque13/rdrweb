@@ -1,28 +1,76 @@
 import React from 'react';
-import { Upload } from "@aws-sdk/lib-storage";
-import { S3Client } from "@aws-sdk/client-s3";
 import SideMenu from 'components/SideMenu';
 import { ThemeProvider } from 'styled-components';
 import { ScreenClassProvider } from 'react-grid-system';
+import {Route, Router, Switch} from "react-router-dom";
+import { History } from 'history';
 // theme
 import {GlobalStyle} from 'theme/globalStyle';
 // style
-import {StyledMainApp} from './style';
+import {StyledMainApp, AppMainContainer, StyledRoutesContainer} from './style';
 import './App.css';
+import {routes} from "../../utils/routesHelper";
 
-function App() {
+const routing = Object.values(routes).reduce
+    <{ publicRoutes: IRoute[] }>((pV, cV) => {
+    pV.publicRoutes.push(cV); // pV.publicRoutes = [Object1, Object2]
+    return pV;
+}, { publicRoutes: [] });
+
+const InnerApp: React.FC = React.memo(() => {
+    // renders
+    const renderRoutes = (
+        <React.Suspense fallback="">
+            <Switch>
+                {
+                    routing.publicRoutes.map(route => (
+                      <Route
+                        key={route.path}
+                        path={route.path}
+                        component={route.component}
+                      />
+                    ))
+                }
+            </Switch>
+        </React.Suspense>
+    )
 
     return (
-        <StyledMainApp className="App">
+        <AppMainContainer
+          className="App"
+        >
+
+              {/* SideBar */}
+              {
+                <SideMenu />
+              }
+
+              <StyledRoutesContainer>
+                {/* SideBar */}
+                {renderRoutes}
+              </StyledRoutesContainer>
+
+        </AppMainContainer>
+    )
+});
+
+interface AppProps {
+  history: History;
+}
+
+const App: React.FC<AppProps> = function App({
+  history,
+}) {
+    return (
+        <Router history={history}>
             <ScreenClassProvider>
                 <ThemeProvider theme={{}}>
-                    {/* SideBar */}
-                    <SideMenu />
                     <GlobalStyle />
+                    <InnerApp />
                 </ThemeProvider>
             </ScreenClassProvider>
-        </StyledMainApp>
+        </Router>
     );
 }
 
-export default App;
+export default React.memo(App);
