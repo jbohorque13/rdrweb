@@ -41,7 +41,7 @@ const AuthContextProvider = ({ children }: AuthPropChildren) => {
         }
         return out;
     }, [])
-    console.log(defaultValuesState)
+
     const contextValues = {
         ...defaultValuesState,
         signIn

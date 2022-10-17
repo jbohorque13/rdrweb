@@ -21,7 +21,7 @@ declare interface AuthState {
 declare interface AuthContext extends AuthState{
   // Management
   signIn: (params: ISignInVariables) => Promise<SignInResult | null>;
-  signOut: () => Promise<ISignOutResponse | null>;
+  signOut?: () => Promise<ISignOutResponse | null>;
   // Helpers
-  loadingCurrentUser: boolean;
+  loadingCurrentUser?: boolean;
 }
