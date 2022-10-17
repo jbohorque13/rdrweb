@@ -7,10 +7,10 @@ import { History } from 'history';
 // theme
 import {GlobalStyle} from 'theme/globalStyle';
 // style
-import {StyledMainApp, AppMainContainer, StyledRoutesContainer} from './style';
+import {AppMainContainer, StyledRoutesContainer} from './style';
 import './App.css';
-import {routes} from "../../utils/routesHelper";
-import {AuthContext} from "../../context/auth";
+import {routes} from "utils/routesHelper";
+import AuthContextProvider from "context/auth";
 
 const routing = Object.values(routes).reduce
     <{ publicRoutes: IRoute[] }>((pV, cV) => {
@@ -37,7 +37,7 @@ const InnerApp: React.FC = React.memo(() => {
     )
 
     return (
-        <AuthContext.Provider value={{token: 'Josue'}}>
+        <AuthContextProvider>
             <AppMainContainer
                 className="App"
             >
@@ -51,7 +51,7 @@ const InnerApp: React.FC = React.memo(() => {
                 {renderRoutes}
               </StyledRoutesContainer>
             </AppMainContainer>
-        </AuthContext.Provider>
+        </AuthContextProvider>
 
     )
 });
