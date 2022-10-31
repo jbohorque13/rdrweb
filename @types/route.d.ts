@@ -1,6 +1,6 @@
 declare interface IRoute {
   path: string;
-  component: React.LazyExoticComponent<React.NamedExoticComponent<any>>;
+  component: React.ReactNode<React.NamedExoticComponent<any>>;
   getPath?: {
     [k: string]: (...params) => string;
   },

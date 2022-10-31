@@ -30,6 +30,8 @@ const AuthContextProvider = ({ children }: AuthPropChildren) => {
         }
     }, []);
 
+    // useMemo
+
     const defaultValuesState = React.useMemo(() =>{
         const out: AuthState = {
             user: {
@@ -41,6 +43,8 @@ const AuthContextProvider = ({ children }: AuthPropChildren) => {
         }
         return out;
     }, [])
+
+    // contex values by default
 
     const contextValues = {
         ...defaultValuesState,

@@ -7,7 +7,7 @@ import { History } from 'history';
 // theme
 import {GlobalStyle} from 'theme/globalStyle';
 // style
-import {AppMainContainer, StyledRoutesContainer} from './style';
+import { AppMainContainer, StyledRoutesContainer} from './style';
 import './App.css';
 import {routes} from "utils/routesHelper";
 import AuthContextProvider from "context/auth";
@@ -21,7 +21,7 @@ const routing = Object.values(routes).reduce
 const InnerApp: React.FC = React.memo(() => {
     // renders
     const renderRoutes = (
-        <React.Suspense fallback="">
+        <React.Suspense fallback={<div> Esperando... </div>}>
             <Switch>
                 {
                     routing.publicRoutes.map(route => (

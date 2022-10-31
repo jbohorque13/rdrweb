@@ -22,10 +22,10 @@ export const StyledWrapper = styled.div`
 
 export const StyledTable = styled.table`
     width: 100%;
-      border-spacing: 0;
-      font-family: ${theme.fontNames.inter};
-      font-size: 0.875rem; // 14px
-      line-height: 1rem; // 16px;
+    border-spacing: 0;
+    font-family: ${theme.fontNames.inter};
+    font-size: 0.875rem; // 14px
+    line-height: 1rem; // 16px;
 `;
 
 export const StyledTableHead = styled.thead`
